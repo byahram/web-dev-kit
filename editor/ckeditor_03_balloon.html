@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ckeditor5 03.Balloon editor</title>
+
+    <style>
+        body {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- https://ckeditor.com/docs/ckeditor5/latest/getting-started/installation/quick-start.html -->
+
+    <!------------------------>
+    <!------------------------>
+    <!-- 3. Balloon Editor --->
+    <!------------------------>
+    <!------------------------>
+
+    <h1>3. Balloon editor</h1>
+    <div id="balloon_editor">
+        <p>This is some sample content.</p>
+    </div>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/balloon/ckeditor.js"></script>
+    <script>
+        BalloonEditor
+            .create( document.querySelector( '#balloon_editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+</body>
+</html>
