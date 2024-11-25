@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ckeditor5 01.Inline editor</title>
+
+    <style>
+        body {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- https://ckeditor.com/docs/ckeditor5/latest/getting-started/installation/quick-start.html -->
+
+    <!----------------------->
+    <!----------------------->
+    <!-- 2. Inline Editor --->
+    <!----------------------->
+    <!----------------------->
+
+    <h1>2. Inline editor</h1>
+    <div id="inline_editor">
+        <p>This is some sample content.</p>
+    </div>
+    
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/inline/ckeditor.js"></script>
+    <script>
+        InlineEditor
+            .create( document.querySelector( '#inline_editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+</body>
+</html>
