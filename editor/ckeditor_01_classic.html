@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ckeditor5 01.Classic editor</title>
+
+    <style>
+        body {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- https://ckeditor.com/docs/ckeditor5/latest/getting-started/installation/quick-start.html -->
+
+    <!------------------------>
+    <!------------------------>
+    <!-- 1. Classic Editor --->
+    <!------------------------>
+    <!------------------------>
+
+    <h1>1. Classic editor</h1>
+    <div id="classic_editor">
+        <p>This is some sample content.</p>
+    </div>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#classic_editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+</body>
+</html>
