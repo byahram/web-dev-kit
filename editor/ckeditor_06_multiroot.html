@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ckeditor5 06.Multi-root editor</title>
+
+    <style>
+        body {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .editor {
+            border: #ccced1 1px solid;
+            margin-top: 10px;
+        }
+        .boxes {
+            margin-top: 10px;
+            display: flex;
+        }
+        .box {
+            margin-top: 0px;
+            width: 50%;
+        }
+        .box .ck-editor__editable {
+            height: 100%;
+        }
+        .box-left {
+            margin-right: 10px;
+        }
+        #toolbar.sticky {
+            position: sticky;
+            top: 0px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <!-- https://ckeditor.com/docs/ckeditor5/latest/getting-started/installation/quick-start.html -->
+
+    <!-------------------------->
+    <!-------------------------->
+    <!-- 6. Multi-root Editor -->
+    <!-------------------------->
+    <!-------------------------->
+
+    <!--
+        Wrapping the structure inside a pair of
+        contenteditable="true" + contenteditable="false" elements
+        is required to provide proper caret handling when
+        using arrow keys at the start and end of an editable area.
+
+        You can skip them if you don't want to move the
+        caret between editable areas using arrow keys.
+    !-->
+
+    <h1>6. Multi-root Editor</h1>
+    <div id="toolbar"></div>
+    <div contenteditable="true">
+        <div contenteditable="false">
+            <div class="editor">
+                <div id="header">
+                    <p>This is the initial editor content.</p>
+                </div>
+            </div>
+            <div class="editor">
+                <div id="content">
+                    <p>This is the initial editor content.</p>
+                </div>
+            </div>
+            <div class="boxes">
+                <div class="box box-left editor">
+                    <div id="left-side">
+                        <p>This is the initial editor content.</p>
+                    </div>
+                </div>
+                <div class="box box-right editor">
+                    <div id="right-side">
+                        <p>This is the initial editor content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/multi-root/ckeditor.js"></script>
+    <script>
+        MultiRootEditor
+            .create( {
+                // Define roots / editable areas:
+                header: document.getElementById( 'header' ),
+                content: document.getElementById( 'content' ),
+                leftSide: document.getElementById( 'left-side' ),
+                rightSide: document.getElementById( 'right-side' )
+            } )
+            .then( editor => {
+                window.editor = editor;
+
+                // Append toolbar to a proper container.
+                const toolbarContainer = document.getElementById( 'toolbar' );
+                toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+
+                // Make toolbar sticky when the editor is focused.
+                editor.ui.focusTracker.on( 'change:isFocused', () => {
+                    if ( editor.ui.focusTracker.isFocused ) {
+                        toolbarContainer.classList.add( 'sticky' );
+                    } else {
+                        toolbarContainer.classList.remove( 'sticky' );
+                    }
+                } );
+            } )
+            .catch( error => {
+                console.error( 'There was a problem initializing the editor.', error );
+            } );
+    </script>
+</body>
+</html>
